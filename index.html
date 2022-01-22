@@ -1,38 +1,53 @@
 <html lang="en">
 
 <head>
+  <title>popup</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Document</title>
+  <!-- <link rel="stylesheet" href="../bower_components/pure/pure-min.css" /> -->
+  <!-- <link rel="stylesheet" href="../bower_components/turret/dist/turretcss.min.css" /> -->
+  <!-- <script src="../bower_components/jquery/dist/jquery.min.js"></script> -->
+  <script src="./bower_components/cash/dist/cash.min.js"></script>
+  <script src="./bower_components/hotkeysjs/dist/hotkeys.min.js"></script>
+  <script src="./bower_components/lodash/lodash.js"></script>
+  <script src="./bower_components/clipboard/dist/clipboard.min.js"></script>
+  <script src="./third-party/voca.min.js" type="text/javascript"></script>
+  <script src="./utils/find.js" type="text/javascript"></script>
+  <script src="./law-data/ChLaw.js" type="text/javascript"></script>
+  <script src="./popup/popup.js" type="text/javascript"></script>
   <link href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/build.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./popup/popup.css" />
 </head>
 
-<body class="p-3">
-  <div>
-    <a href="/popup/popup.html" class="link-mktg arrow-target-mktg text-semibold f3-mktg">
-      測試
-      <svg xmlns="http://www.w3.org/2000/svg" class="octicon arrow-symbol-mktg" width="16" height="16"
-        viewBox="0 0 16 16" fill="none">
-        <path fill="currentColor"
-          d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z">
-        </path>
-        <path stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path>
-      </svg>
-    </a>
-  </div>
+
+<body class="p-2">
+  <main>
+    <div class="position-relative autocomplete">
+      <input id="search" class="form-control input-block" type="text" aria-label="Search" placeholder="Search">
+      <ul class="autocomplete-results">
+        <!-- <li class="autocomplete-item">Option 1</li>
+        <li class="autocomplete-item">Option 2</li>
+        <li class="autocomplete-item">Option 3</li> -->
+      </ul>
+    </div>
+    <section id="list">
+
+    </section>
+  </main>
   <!-- <div>
-    <a href="/options/options.html" class="link-mktg arrow-target-mktg text-semibold f3-mktg">
-      設定
-      <svg xmlns="http://www.w3.org/2000/svg" class="octicon arrow-symbol-mktg" width="16" height="16"
-        viewBox="0 0 16 16" fill="none">
-        <path fill="currentColor"
-          d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z">
-        </path>
-        <path stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path>
-      </svg>
-    </a>
-  </div> -->
+      <a href="/options/options.html" class="link-mktg arrow-target-mktg text-semibold f3-mktg">
+        設定
+        <svg xmlns="http://www.w3.org/2000/svg" class="octicon arrow-symbol-mktg" width="16" height="16"
+          viewBox="0 0 16 16" fill="none">
+          <path fill="currentColor"
+            d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z">
+          </path>
+          <path stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </a>
+    </div> -->
   <div>
     <ul>
       <li>
@@ -60,8 +75,13 @@
           <div>搜尋與「憲」或「法」相關的所有法規的第一條到第十條和第二十條和第三十條以後</div>
         </li>
       </ul>
+      <br />
+      <ul>
+        按法條可以複製內文到剪貼簿
+      </ul>
     </ul>
   </div>
 </body>
+
 
 </html>
