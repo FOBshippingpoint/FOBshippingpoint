@@ -4,7 +4,7 @@ const SCORE = {
   COUNT: 1,
 };
 
-function findLawName(laws, name) {
+function findLawName(laws, name, limit) {
   const found = laws.filter((l) => {
     let score = 0;
     score += v.matches(l.Alias, `^${name}$`) ? SCORE.PERFECT : 0;
@@ -16,12 +16,14 @@ function findLawName(laws, name) {
     const regex = new RegExp(`[${v.chars(name)}]`, "g");
     l.LawNameResult = l.LawName.replace(
       regex,
-      '<span class="color-primary">$&</span>'
+      '<span class="color-fg-accent">$&</span>'
     );
     return true;
   });
 
-  return _.orderBy(found, ["Score"], ["desc"]);
+  const sorted = _.orderBy(found, ["Score"], ["desc"]);
+  limit = limit || 10;
+  return sorted.slice(0, limit);
 }
 
 function findArticles(law, arg) {
