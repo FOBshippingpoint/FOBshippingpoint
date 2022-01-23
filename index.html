@@ -22,17 +22,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 
   <script>
-    function i18nTool() {
-      const lang = Cookies.get('lang') // 配合 js-cookie 取得 lang
-      i18n.set({
-        lang: lang ? lang : 'en',
-        path: './', // default
-      })
-      return lang
-    }
-  </script>
-
-  <script>
     let markType = "";
     let markNum = 1;
     let endArr = [""];
@@ -79,7 +68,6 @@
         $("#copy").hide();
         $("#copied").show();
         $(".copy").one("mouseleave", function () {
-          console.log("mouse")
           $("#copy").show();
           $("#copied").hide();
         })
@@ -107,7 +95,7 @@
     }
 
     function replacePunctuation(text, mark) {
-      return text.replace(/[,.\?"'~？，。]/, mark);
+      return text.replace(/[,.\?"'~？，。]/g, mark);
     }
 
     function getMark() {
