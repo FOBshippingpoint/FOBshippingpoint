@@ -1,6 +1,6 @@
 # Exclamationer
 
-[Exclamationer](https://fobshippingpoint.github.io/FOBshippingpoint/) 可以幫你把句子轉換成更有魄力的樣子。
+[Exclamationer](https://fobshippingpoint.github.io/exclamationer/) 可以幫你把句子轉換成更有魄力的樣子。
 
 ## 特色
 
